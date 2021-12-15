@@ -1,4 +1,14 @@
-class Customer:
+class User:
+    def log(self):
+        print(self)
+
+#polymorphism
+class Teacher(User):
+    def log(self):
+        print("I am a teacher")
+
+
+class Customer(User):
     def __init__(self,name,membership_type): #constructor or intitializer when a customer is created
         self.name=name
         self.membership_type=membership_type
@@ -14,6 +24,9 @@ class Customer:
     def name(self,name):
         print("setting name")
         self._name=name
+    @name.deleter
+    def name(self):
+        del self._name
 
     def update_membership(self,new_membership):
         self.membership_type=new_membership
@@ -49,22 +62,31 @@ class Customer:
 #print(c2.name,c2.membership_type)
 
 #list of customers
-customers=[Customer("Lara","Diamond"), Customer("Ruuh","Platinum")]
+users=[Customer("Lara","Diamond"), Customer("Ruuh","Platinum"),Teacher()]
+
+for user in users:
+    user.log()
+
+
+
+
+
+
 #Customer.print_all_customers(customers)
-print(customers[0]==customers[1])
+#print(customers[0]==customers[1])
 
 
-data={customers[0]}
+#data={customers[0]}
 
 
 #updating customer membership_type
-print(customers[1].membership_type)
-customers[1].update_membership("Nutron")
+#print(customers[1].membership_type)
+#customers[1].update_membership("Nutron")
 
 
-print(customers[1].membership_type)
-print(customers[0].name)
-
+#print(customers[1].membership_type)
+#print(customers[0].name)
+#customers[0].log()
 #Encapsulation
 #Inheritence
 #Polymorphisom
