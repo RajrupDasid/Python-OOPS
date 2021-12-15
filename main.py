@@ -1,7 +1,8 @@
 
 class Item:
     pay_rate=0.8 #class attributes
-    def __init__(self,name: str,price:float,quantity:float): #constructor 
+    all=[]
+    def __init__(self,name:str,price:float,quantity:float): #constructor 
         
         #Run validation to received objects
         assert price>=0 ,f"User input error price-{price} cannot be a negative" #to verify and check the correct value of an int output
@@ -11,6 +12,9 @@ class Item:
         self.name=name #dynamic attribute assignment
         self.price=price
         self.quantity=quantity
+
+        # Actions to execute
+        Item.all.append(self)
         
     def calculate_total_price(self):
         return self.price*self.quantity
@@ -21,6 +25,11 @@ item2=Item("Laptop",60000,10)
 item3=Item("Monitor",100000,90)
 item4=Item("GPU",300000,40)
 item5=Item("CPU",60000,20)
+
+
+print(Item.all)
+
+
 
 item1.apply_discount() 
 
